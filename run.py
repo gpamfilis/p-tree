@@ -1,6 +1,8 @@
 # coding: utf-8
 from __future__ import division, unicode_literals, print_function  # for compatibility with Python 2 and 3
 import os
+
+from dbox import prepare_photos
 from utilities import *
 import math
 import cv2
@@ -37,6 +39,15 @@ class CountColonies(object):
 
     def __init__(self, url):
         self.url = url
+
+    def handle_directories(self):
+        for f in ['./data', './temp', './seed_images']:
+            try:
+                os.mkdir(f)
+            except Exception as e:
+                print(e)
+                erase_directory_contents(f)
+        return None
 
     def pre_fit(self, mean_diameter_pixels=41):
         print('Erasing Directory Contents')
@@ -121,19 +132,25 @@ class CountColonies(object):
 
         return dfs
 
+    def main(self):
+        cc.handle_directories()
+        prepare_photos(self.url)
+        pixel_dc = 41
+        while True:
+            pixel_dc = self.pre_fit(mean_diameter_pixels=pixel_dc)
+            accept = input('Accept?: ')
+            if accept == 'y':
+                break
+            else:
+                pixel_dc = int(input('Pixels: '))
+
+        dfs = self.count_all(mean_diameter_pixels=pixel_dc)
+
+        return dfs
+
 
 if __name__ == '__main__':
-    cc = CountColonies(url='https://www.dropbox.com/sh/vq4wb9fd9k1fz49/AADLR3IIgj8lMWs8m9QLzdPoa?dl=1')
-    pixel_dc = 41
-    while True:
-        pixel_dc = cc.pre_fit(mean_diameter_pixels=pixel_dc)
-        accept = input('Accept?: ')
-        if accept == 'y':
-            break
-        else:
-            pixel_dc = int(input('Pixels: '))
-
-    dfs = cc.count_all(mean_diameter_pixels=pixel_dc)
-
-    print(dfs)
+    url = 'https://www.dropbox.com/sh/vq4wb9fd9k1fz49/AADLR3IIgj8lMWs8m9QLzdPoa?dl=1'
+    cc = CountColonies(url=url)
+    dfs = cc.main()
 

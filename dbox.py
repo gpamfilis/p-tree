@@ -30,5 +30,5 @@ def prepare_photos(url):
 
 
 if __name__ == '__main__':
-    url = 'https://www.dropbox.com/sh/vq4wb9fd9k1fz49/AADLR3IIgj8lMWs8m9QLzdPoa?dl=1'
-    prepare_photos(url)
+    pass
+
