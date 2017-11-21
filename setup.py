@@ -36,7 +36,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.1.4',
+    version='0.1.7',
 
     description='A program for counting colonies in petri dishes',
     long_description=long_description,
