@@ -2,8 +2,8 @@
 from __future__ import division, unicode_literals, print_function  # for compatibility with Python 2 and 3
 import os
 
-from dbox import prepare_photos
-from utilities import *
+from p_tree.dbox import prepare_photos
+from p_tree.utilities import *
 import math
 import cv2
 import shutil
@@ -41,7 +41,7 @@ class CountColonies(object):
         self.url = url
 
     def handle_directories(self):
-        for f in ['./data', './temp', './seed_images']:
+        for f in ['../data', '../temp', '../seed_images']:
             try:
                 os.mkdir(f)
             except Exception as e:
@@ -51,11 +51,11 @@ class CountColonies(object):
 
     def pre_fit(self, mean_diameter_pixels=41):
         print('Erasing Directory Contents')
-        erase_directory_contents('./temp/')
-        erase_directory_contents('./seed_images/')
+        erase_directory_contents('../temp/')
+        erase_directory_contents('../seed_images/')
         print('Rotating Base Image')
-        rotate_images(base_image='./data/'+os.listdir('./data/')[0])
-        file_paths = ['./seed_images/' + f for f in os.listdir('./seed_images/')]
+        rotate_images(base_image='../data/'+os.listdir('../data/')[0])
+        file_paths = ['../seed_images/' + f for f in os.listdir('../seed_images/')]
         counts = []
         for file_path in file_paths[:1]:
             print(file_path)
@@ -67,9 +67,9 @@ class CountColonies(object):
 
         for c, count in enumerate(counts):
             for i in range(len(count)):
-                plt.imsave('./temp/bw_' + str(c) + '_' + str(i) + '.png', arr=counts[c][i])
+                plt.imsave('../temp/bw_' + str(c) + '_' + str(i) + '.png', arr=counts[c][i])
 
-        full_frames = pims.ImageSequence('./temp/*.png', as_grey=True)
+        full_frames = pims.ImageSequence('../temp/*.png', as_grey=True)
         frame = full_frames[0]
         f = tp.locate(frame, mean_diameter_pixels)
         f.head(), f.shape
@@ -77,11 +77,11 @@ class CountColonies(object):
         tp.annotate(f, frame)
         return mean_diameter_pixels
 
-    def count_one(self, mean_diameter_pixels=11, base_image='./data/'+os.listdir('./data/')[0]):
-        erase_directory_contents('./temp/')
-        erase_directory_contents('./seed_images/')
+    def count_one(self, mean_diameter_pixels=11, base_image='../data/'+os.listdir('../data/')[0]):
+        erase_directory_contents('../temp/')
+        erase_directory_contents('../seed_images/')
         rotate_images(base_image=base_image, angle=45, n=4)
-        file_paths = ['./seed_images/' + f for f in os.listdir('./seed_images/')]
+        file_paths = ['../seed_images/' + f for f in os.listdir('../seed_images/')]
         counts = []
         for file_path in file_paths[:]:
             print(file_path)
@@ -96,8 +96,8 @@ class CountColonies(object):
             print('seeds: ', c)
             for i in range(len(count)):
                 print('saving: ', i)
-                plt.imsave('./temp/bw_' + str(0) + '_' + str(i) + '.png', arr=counts[c][i])
-            full_frames = pims.ImageSequence('./temp/*.png', as_grey=True)
+                plt.imsave('../temp/bw_' + str(0) + '_' + str(i) + '.png', arr=counts[c][i])
+            full_frames = pims.ImageSequence('../temp/*.png', as_grey=True)
             ec = []
             for f, frame in enumerate(full_frames):
                 print('reading: ', f)
@@ -123,7 +123,7 @@ class CountColonies(object):
 
         return df
 
-    def count_all(self, mean_diameter_pixels=11, base_images=['./data/'+f for f in os.listdir('./data/')]):
+    def count_all(self, mean_diameter_pixels=11, base_images=['../data/'+f for f in os.listdir('../data/')]):
         dfs = []
 
         for base_image in base_images:
@@ -153,4 +153,5 @@ if __name__ == '__main__':
     url = 'https://www.dropbox.com/sh/vq4wb9fd9k1fz49/AADLR3IIgj8lMWs8m9QLzdPoa?dl=1'
     cc = CountColonies(url=url)
     dfs = cc.main()
+    print(dfs)
 
