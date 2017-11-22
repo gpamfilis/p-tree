@@ -8,11 +8,15 @@ Only images must be contained in the directory no subdirectories.
 ```
 
 #THIS
+
 ![alt text](https://raw.githubusercontent.com/gpamfilis/p-tree/master/ORIGINANL.png)
 
 #TO THIS
+
 ![alt text](https://raw.githubusercontent.com/gpamfilis/p-tree/master/MODIFIED.png)
 
+
+#If it misses a few its ok! it gets them by cutting and rotating the original image!
 
 ### Installation
 ```
