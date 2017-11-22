@@ -11,3 +11,8 @@ gen
 
 __pycache__
 *.pyc
+seed_images
+temp
+venv36
+build
+.ipynb_checkpoints
