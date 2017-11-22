@@ -49,3 +49,5 @@ At the end of your dropbox-link it says **?dl=0**. change it to **?dl=1**.
 6. modify makefile to unistall reqs.
 7. modify makefile to build and deploy.
 8. convert it into a flask extension for www.engineer-it.org.
+9. make video on youtube on how to use it.
+10. show jupyter notebook example steps.
