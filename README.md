@@ -7,7 +7,11 @@ In order to use it you must provide it with a shared dropbox link to a directory
 Only images must be contained in the directory no subdirectories.
 ```
 
+#THIS
 ![alt text](https://raw.githubusercontent.com/gpamfilis/p-tree/master/ORIGINANL.png)
+
+#TO THIS
+![alt text](https://raw.githubusercontent.com/gpamfilis/p-tree/master/MODIFIED.png)
 
 
 ### Installation
@@ -53,3 +57,4 @@ At the end of your dropbox-link it says **?dl=0**. change it to **?dl=1**.
 8. convert it into a flask extension for www.engineer-it.org.
 9. make video on youtube on how to use it.
 10. show jupyter notebook example steps.
+11. include images
