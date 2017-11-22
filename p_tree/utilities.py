@@ -36,6 +36,20 @@ Explain WTF your doing
 __author__ = 'George Pamfilis'
 
 
+def handle_directories(files_list = ['./p_tree/data', './p_tree/temp', './p_tree/seed_images'], rm_exists=False):
+    for f in files_list:
+        try:
+            print('Making Directory: ',f)
+            os.mkdir(f)
+        except Exception as e:
+            print(e)
+            if rm_exists:
+                erase_directory_contents(f)
+            else:
+                pass
+    return None
+
+
 def cut_in_quads(f_name):
     img_orig = Image.open(f_name)
     h = img_orig.size[0]
@@ -48,7 +62,7 @@ def cut_in_quads(f_name):
 
     for j in range(len(quadrant_crops)):
         quadrant = img_orig.crop(quadrant_crops[j])
-        quadrant.save('../Q' + str(j) + '.png')
+        quadrant.save('./p_tree/Q' + str(j) + '.png')
     return None
 
 
@@ -63,13 +77,13 @@ def cut_in_half(f_name, orientation='vertical'):
         vertical_crops = [(0, 0, int(w / 2), h), (int(w / 2), 0, w, h)]
         for j, v in enumerate(vertical_crops):
             half = img_orig.crop(v)
-            half.save('../HV' + str(j) + '.png')
+            half.save('./p_tree/HV' + str(j) + '.png')
 
     elif orientation == 'horizontal':
         vertical_crops = [(0, 0, w, int(h / 2)), (0, int(h / 2), w, h)]
         for j, v in enumerate(vertical_crops):
             half = img_orig.crop(v)
-            half.save('../HH' + str(j) + '.png')
+            half.save('./p_tree/HH' + str(j) + '.png')
 
     return None
 
@@ -78,7 +92,7 @@ def rotate_images(base_image, angle=45, n=4):
     img = Image.open(base_image)
     for i in range(n):
         img2 = img.rotate(angle * i)
-        img2.save('../seed_images/seed_' + str(i) + '.png')
+        img2.save('./p_tree/seed_images/seed_' + str(i) + '.png')
     return None
 
 
@@ -90,19 +104,19 @@ def filter_out_colonies(f_name):
     # quadrants
     for i in range(4):
         # print('Quad Frame: ',i)
-        frame = pims.ImageSequence('../Q' + str(i) + '.png', as_grey=True)[0]
+        frame = pims.ImageSequence('./p_tree/Q' + str(i) + '.png', as_grey=True)[0]
         frames.append(frame)
 
     # HV
     for i in range(2):
         # print('HV Frame: ',i)
-        frame = pims.ImageSequence('../HV' + str(i) + '.png', as_grey=True)[0]
+        frame = pims.ImageSequence('./p_tree/HV' + str(i) + '.png', as_grey=True)[0]
         frames.append(frame)
 
     # HH
     for i in range(2):
         # print('HH Frame: ',i)
-        frame = pims.ImageSequence('../HH' + str(i) + '.png', as_grey=True)[0]
+        frame = pims.ImageSequence('./p_tree/HH' + str(i) + '.png', as_grey=True)[0]
         frames.append(frame)
 
     to = []
@@ -119,7 +133,7 @@ def filter_out_colonies(f_name):
     return np.array(to)
 
 
-def erase_directory_contents(folder='../temp'):
+def erase_directory_contents(folder='./p_tree/temp'):
     for the_file in os.listdir(folder):
         file_path = os.path.join(folder, the_file)
         try:
