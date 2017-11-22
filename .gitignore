@@ -8,9 +8,9 @@
 out
 gen
 /.pypirc
-
 __pycache__
 *.pyc
+data
 seed_images
 temp
 venv36
