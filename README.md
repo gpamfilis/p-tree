@@ -7,6 +7,8 @@ In order to use it you must provide it with a shared dropbox link to a directory
 Only images must be contained in the directory no subdirectories.
 ```
 
+![alt text](https://raw.githubusercontent.com/gpamfilis/p-tree/master/ORIGINANL.png)
+
 
 ### Installation
 ```
