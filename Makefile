@@ -20,3 +20,9 @@ clean:
 	@rm -rf dist/
 	@rm -rf *.egg
 	@rm -rf *.egg-info
+
+push:
+	make clean
+	git add .
+	git commit -m "build from make"
+	git push origin master

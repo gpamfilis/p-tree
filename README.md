@@ -45,3 +45,7 @@ At the end of your dropbox-link it says **?dl=0**. change it to **?dl=1**.
 2. Accept directory as input and not only dropbox shared link.
 3. Save DataFrames to csv.
 4. Output analytics such as bell curves (mean and std) for all petries.
+5. modify makefile to pip install reqs.
+6. modify makefile to unistall reqs.
+7. modify makefile to build and deploy.
+8. convert it into a flask extension for www.engineer-it.org.
