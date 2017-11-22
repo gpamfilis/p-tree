@@ -35,6 +35,10 @@ if __name__ == '__main__':
     print(dfs)
 ```
 
+# IMPORTANT (for now)
+
+At the end of your dropbox-link it says **?dl=0**. change it to **?dl=1**.
+
 # TODO
 
 1. Provide rotate angle option and number of rotations.
