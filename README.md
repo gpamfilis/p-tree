@@ -1,22 +1,23 @@
 # p-tree 0.1.14
 
 ## About
+
 ```
 This package is used to count the CFUs in petri dishes.
 In order to use it you must provide it with a shared dropbox link to a directory containing the images in a png format.
 Only images must be contained in the directory no subdirectories.
 ```
 
-#THIS
+# THIS
 
 ![alt text](https://raw.githubusercontent.com/gpamfilis/p-tree/master/ORIGINANL.png)
 
-#TO THIS
+# TO THIS
 
 ![alt text](https://raw.githubusercontent.com/gpamfilis/p-tree/master/MODIFIED.png)
 
 
-#If it misses a few its ok! it gets them by cutting and rotating the original image!
+# If it misses a few its ok! it gets them by cutting and rotating the original image!
 
 ### Installation
 ```
