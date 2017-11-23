@@ -32,6 +32,14 @@ or
 pip install --upgrade p-tree
 ```
 
+### Instuctions
+
+1. Copy the example script bellow and run it.
+2. An image will pop-up containing a petri dish with some (or all colonies circled).
+3. If not all are circled **close** the image and enter `n` in the `Accept?` message of the prompt.
+4. Enter after that the pixel size of the colony (estimate). The x and y axis are numbered.
+5. Once the pixel size is added a new image will pop-up.
+If satisfied **close** the image and type `y` in the `Accept?` field. If not satisfied go back to **3**.
 
 ### Example Script
 
